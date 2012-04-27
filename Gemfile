@@ -6,6 +6,7 @@ gem "sequel"
 gem "haml"
 gem "coffee-script"
 gem "uuid"
+gem "rack"
 
 group :test do
   gem "rspec"

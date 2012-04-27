@@ -94,6 +94,7 @@ DEPENDENCIES
   coffee-script
   cucumber
   haml
+  rack
   rspec
   rspec_api_documentation
   sequel
