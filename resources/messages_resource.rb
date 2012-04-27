@@ -1,5 +1,6 @@
 require "message"
 require "uri"
+require "id"
 
 class MessagesResource < Webmachine::Resource
   def allowed_methods
@@ -34,8 +35,7 @@ class MessagesResource < Webmachine::Resource
 
   def from_form
     message = Message.new(params["message"])
-    id = SecureRandom.hex(20)
-    message.save(id)
+    message.save(ID.generate)
     response.do_redirect
   end
 end

@@ -1,9 +1,8 @@
 $LOAD_PATH << File.expand_path("../resources", __FILE__)
 $LOAD_PATH << File.expand_path("../models", __FILE__)
+$LOAD_PATH << File.expand_path("../lib", __FILE__)
 
 require "webmachine"
-require "haml"
-require "securerandom"
 
 require "home_resource"
 require "messages_resource"

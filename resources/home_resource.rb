@@ -1,4 +1,5 @@
 require "message"
+require "haml"
 
 class HomeResource < Webmachine::Resource
   private
