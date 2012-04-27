@@ -5,12 +5,25 @@ class JavascriptResource < Webmachine::Resource
     [["application/javascript", :to_javascript]]
   end
 
+  def last_modified
+    scripts.inject(Time.at(0)) do |mtime, script|
+      [mtime, File.mtime(script)].max
+    end
+  end
+
+  def generate_etag
+    last_modified.to_i.to_s
+  end
+
   private
 
-  def to_javascript
+  def scripts
     base_dir = File.expand_path("../../coffee", __FILE__)
-    scripts = File.join(base_dir, "**", "*.coffee")
-    Dir[scripts].inject("") do |js, script|
+    Dir[File.join(base_dir, "**", "*.coffee")]
+  end
+
+  def to_javascript
+    scripts.inject("") do |js, script|
       js << CoffeeScript.compile(File.read(script))
     end
   end
