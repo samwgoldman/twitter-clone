@@ -8,5 +8,5 @@ Given /^I post "([^"]*)"$/ do |message|
 end
 
 Then /^I should see the message "([^"]*)"$/ do |message|
-  find(".message").should have_content(message)
+  find("#messages > li").should have_content(message)
 end

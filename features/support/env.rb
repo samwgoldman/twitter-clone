@@ -1,7 +1,8 @@
+require_relative "../../app"
 require "capybara/cucumber"
-require "webmachine/adapter"
+require "capybara/webkit"
 require "webmachine/adapters/rack"
 
-require_relative "../../app"
-
 Capybara.app = Webmachine::Adapters::Rack.new(App.configuration, App.dispatcher)
+
+Capybara.current_driver = Capybara.javascript_driver = :webkit
