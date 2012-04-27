@@ -23,8 +23,13 @@ class JavascriptResource < Webmachine::Resource
   end
 
   def to_javascript
-    scripts.inject("") do |js, script|
-      js << CoffeeScript.compile(File.read(script))
-    end
+    Struct.new(:scripts) do
+      include Enumerable
+      def each(&block)
+        scripts.each do |script|
+          yield CoffeeScript.compile(File.read(script))
+        end
+      end
+    end.new(scripts)
   end
 end

@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "webmachine"
+gem "webmachine", :git => "http://github.com/samwgoldman/webmachine-ruby", :branch => "streaming_rack"
 gem "sequel"
 gem "haml"
 gem "coffee-script"

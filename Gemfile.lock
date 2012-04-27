@@ -1,3 +1,11 @@
+GIT
+  remote: http://github.com/samwgoldman/webmachine-ruby
+  revision: dc3c3a5b7ca33ba62c762d19449e02168dcabefb
+  branch: streaming_rack
+  specs:
+    webmachine (0.4.2)
+      i18n (>= 0.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,8 +86,6 @@ GEM
     term-ansicolor (1.0.7)
     uuid (2.3.5)
       macaddr (~> 1.0)
-    webmachine (0.4.2)
-      i18n (>= 0.4.0)
     webmock (1.8.6)
       addressable (>= 2.2.7)
       crack (>= 0.1.7)
@@ -99,4 +105,4 @@ DEPENDENCIES
   rspec_api_documentation
   sequel
   uuid
-  webmachine
+  webmachine!
