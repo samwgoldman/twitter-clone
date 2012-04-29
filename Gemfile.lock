@@ -1,6 +1,6 @@
 GIT
   remote: http://github.com/samwgoldman/webmachine-ruby
-  revision: a577b4b719b1f3d135ae8d7f5c167038ed2a460e
+  revision: 3f71bd07f9a51a20e47dbeb96ac55e81489b7431
   branch: streaming_rack
   specs:
     webmachine (0.4.2)
