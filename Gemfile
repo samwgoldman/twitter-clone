@@ -5,6 +5,7 @@ gem "webmachine", :git => "http://github.com/samwgoldman/webmachine-ruby", :bran
 gem "sequel"
 gem "haml"
 gem "coffee-script"
+gem "uglifier"
 gem "uuid"
 gem "rack"
 gem "mongrel", "1.2.0.pre2"

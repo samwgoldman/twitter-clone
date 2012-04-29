@@ -1,5 +1,5 @@
 require "coffee_script"
-require "fiber"
+require "uglifier"
 
 class JavascriptResource < Webmachine::Resource
   def content_types_provided
@@ -7,29 +7,37 @@ class JavascriptResource < Webmachine::Resource
   end
 
   def last_modified
-    scripts.inject(Time.at(0)) do |mtime, script|
-      [mtime, File.mtime(script)].max
-    end
-  end
-
-  def generate_etag
-    last_modified.to_i.to_s
+    scripts.map { |script| File.mtime(script) }.max
   end
 
   private
 
-  def scripts
-    base_dir = File.expand_path("../../coffee", __FILE__)
-    Dir[File.join(base_dir, "**", "*.coffee")]
+  def self.scripts
+    @scripts ||= []
   end
 
+  def self.add_path(type)
+    base_dir = File.expand_path("../../#{type}", __FILE__)
+    scripts = Dir[File.join(base_dir, "**", "*.#{type}")]
+    self.scripts.concat(scripts)
+    define_method(type) { scripts }
+  end
+
+  def scripts
+    self.class.scripts
+  end
+
+  add_path :coffee
+  add_path :js
+
   def to_javascript
-    Fiber.new do
-      scripts.each do |script|
-        sleep 1
-        Fiber.yield CoffeeScript.compile(File.read(script))
-      end
-      nil
+    combined = ""
+    js.each do |script|
+      combined << File.read(script)
     end
+    coffee.each do |script|
+      combined << CoffeeScript.compile(File.read(script))
+    end
+    Uglifier.compile(combined)
   end
 end
