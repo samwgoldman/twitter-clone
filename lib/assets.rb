@@ -30,4 +30,11 @@ class Assets
   def each(&block)
     @assets.each(&block)
   end
+
+  def last_modified
+    files = @paths.inject([]) do |files, path|
+      files.concat(Dir[File.join(path, "**", "*")])
+    end
+    files.map { |file| File.mtime(file) }.max
+  end
 end

@@ -8,7 +8,11 @@ class JavascriptResource < Webmachine::Resource
   end
 
   def self.compile
+    if @last_compiled && @last_compiled < scripts.last_modified
+      @compiled = nil
+    end
     @compiled ||= begin
+      @last_compiled = Time.now
       combined = ""
       scripts.each do |script|
         if script =~ /coffee$/
@@ -28,6 +32,10 @@ class JavascriptResource < Webmachine::Resource
 
   def content_types_provided
     [["application/javascript", :to_javascript]]
+  end
+
+  def last_modified
+    self.class.scripts.last_modified
   end
 
   private
