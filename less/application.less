@@ -1,1 +1,14 @@
 @import "bootstrap.less";
+
+body {
+  padding-top: 10px;
+}
+
+#wrapper {
+  .container-fixed();
+  #grid > .core .span(@gridColumns);
+}
+
+#content {
+  .makeColumn(6, 3);
+}

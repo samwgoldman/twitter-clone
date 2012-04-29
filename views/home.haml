@@ -5,8 +5,10 @@
     %script{type: "text/javascript", src: "/application.js"}
     %link{rel: "stylesheet", href: "/application.css"}
   %body
-    %form{action: "/messages", method: "POST"}
-      %label{for: "message"} What's new?
-      %input{type: "text", id: "message", name: "message"}
-      %input{type: "submit", value: "Tell it!"}
-    %ul#messages
+    #wrapper
+      #content
+        %form{action: "/messages", method: "POST"}
+          %label{for: "message"} What's new?
+          %input{type: "text", id: "message", name: "message"}
+          %input{type: "submit", value: "Tell it!"}
+        #messages
