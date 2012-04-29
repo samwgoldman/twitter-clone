@@ -1,4 +1,5 @@
 require "coffee_script"
+require "fiber"
 
 class JavascriptResource < Webmachine::Resource
   def content_types_provided
@@ -23,13 +24,12 @@ class JavascriptResource < Webmachine::Resource
   end
 
   def to_javascript
-    Struct.new(:scripts) do
-      include Enumerable
-      def each(&block)
-        scripts.each do |script|
-          yield CoffeeScript.compile(File.read(script))
-        end
+    Fiber.new do
+      scripts.each do |script|
+        sleep 1
+        Fiber.yield CoffeeScript.compile(File.read(script))
       end
-    end.new(scripts)
+      nil
+    end
   end
 end
