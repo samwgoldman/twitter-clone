@@ -7,6 +7,7 @@ gem "haml"
 gem "coffee-script"
 gem "uuid"
 gem "rack"
+gem "mongrel", "1.2.0.pre2"
 
 group :test do
   gem "rspec"

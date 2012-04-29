@@ -17,3 +17,8 @@ App = Webmachine::Application.new do |app|
     add ["messages", :id], MessageResource
   end
 end
+
+App.configure do |config|
+  config.port = ENV["PORT"] || 8080
+  config.adapter = :Mongrel
+end
