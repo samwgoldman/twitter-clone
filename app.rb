@@ -6,15 +6,17 @@ require "webmachine"
 require "webmachine/adapters/rack"
 
 require "haml_resource"
-require "javascript_resource"
 require "messages_resource"
 require "message_resource"
+require "javascript_resource"
+require "css_resource"
 
 App = Webmachine::Application.new do |app|
   app.routes do
     add ["messages"], MessagesResource
     add ["messages", :id], MessageResource
     add ["application.js"], JavascriptResource
+    add ["application.css"], CssResource
     add ["*"], HamlResource
   end
 end

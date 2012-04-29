@@ -31,6 +31,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.1)
+    commonjs (0.2.6)
     crack (0.3.1)
     cucumber (1.1.9)
       builder (>= 2.1.2)
@@ -50,6 +51,9 @@ GEM
     haml (3.1.4)
     i18n (0.6.0)
     json (1.7.0)
+    less (2.2.1)
+      commonjs (~> 0.2.6)
+    libv8 (3.3.10.4)
     libwebsocket (0.1.3)
       addressable
     macaddr (1.5.0)
@@ -90,6 +94,8 @@ GEM
     sequel (3.34.1)
     systemu (2.5.0)
     term-ansicolor (1.0.7)
+    therubyracer (0.10.1)
+      libv8 (~> 3.3.10)
     uglifier (1.2.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
@@ -110,11 +116,13 @@ DEPENDENCIES
   cucumber
   fakefs
   haml
+  less
   mongrel (= 1.2.0.pre2)
   rack
   rspec
   rspec_api_documentation
   sequel
+  therubyracer
   uglifier
   uuid
   webmachine!

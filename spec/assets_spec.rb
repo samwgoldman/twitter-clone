@@ -26,4 +26,24 @@ describe Assets do
     assets.add_assets "foo"
     assets.to_a.should eq(Dir["foo/b"] + Dir["foo/a"] + Dir["foo/c"])
   end
+
+  it "maintains a list of paths" do
+    FileUtils.mkdir "foo/baz"
+    FileUtils.mkdir "bar/baz"
+    assets.add_assets "foo/baz"
+    assets.add_assets "foo"
+    assets.add_assets "bar"
+    assets.paths.should eq(Dir["foo/baz"] + Dir["foo"] + Dir["bar"] + Dir["bar/baz"])
+  end
+
+  it "can store paths separate from assets" do
+    assets.add_path "foo"
+    assets.paths.should eq(Dir["foo"])
+  end
+
+  it "does not include directories in the assets" do
+    FileUtils.mkdir "foo/baz"
+    assets.add_assets "foo"
+    assets.to_a.should eq(Dir["foo/a"] + Dir["foo/b"] + Dir["foo/c"])
+  end
 end
