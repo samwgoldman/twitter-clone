@@ -1,6 +1,3 @@
-require "bundler"
-Bundler.setup
-
 require_relative "../../app"
 require "capybara/cucumber"
 require "capybara/webkit"
