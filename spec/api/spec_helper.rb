@@ -1,3 +1,6 @@
+require "bundler"
+Bundler.setup
+
 require_relative "../../app"
 require "rspec_api_documentation"
 require "rspec_api_documentation/dsl"
