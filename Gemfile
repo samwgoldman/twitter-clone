@@ -15,4 +15,5 @@ group :test do
   gem "rspec_api_documentation"
   gem "cucumber"
   gem "capybara-webkit"
+  gem "fakefs"
 end
