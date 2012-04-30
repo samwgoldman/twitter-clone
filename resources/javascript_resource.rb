@@ -27,6 +27,7 @@ class JavascriptResource < Webmachine::Resource
 
   scripts.add_assets "js", "*jquery*.js"
   scripts.add_assets "js"
+  scripts.add_assets "coffee/lib"
   scripts.add_assets "coffee"
   compile
 
