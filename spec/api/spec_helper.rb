@@ -17,3 +17,5 @@ end
 RSpec.configure do |config|
   config.include HtmlHelpers
 end
+
+User.default_cost = 1

@@ -1,17 +1,15 @@
 require_relative "./spec_helper"
 
-resource "JS", :document => false do
+resource "Assets" do
   get "/application.js" do
-    example_request "Downloading the JS" do
+    example_request "Application javascript" do
       status.should eq(200)
       response_headers["Content-Type"].should eq("application/javascript")
     end
   end
-end
 
-resource "CSS", :document => false do
   get "/application.css" do
-    example_request "Downloading the CSS" do
+    example_request "Application CSS" do
       status.should eq(200)
       response_headers["Content-Type"].should eq("text/css")
     end

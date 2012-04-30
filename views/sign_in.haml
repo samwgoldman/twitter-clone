@@ -1,0 +1,17 @@
+!!! 5
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %title Sign In
+  %body
+    #content
+      %a{href: "#sign_in_modal", data: { toggle: "modal" }} Sign in
+      %form#sign_in_modal.modal.hide{action: "/sign_in", method: "GET"}
+        .modal-header
+          %h1 Sign in
+        .modal-body
+          %label{for: "username"} Username
+          %input{type: "text", id: "username", name: "username"}
+          %label{for: "password"} Password
+          %input{type: "password", id: "password", name: "password"}
+        .modal-footer
+          %button.btn.btn-primary{type: "submit"} Sign in

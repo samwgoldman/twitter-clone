@@ -1,10 +1,3 @@
-class window.RemoteList
-  constructor: (@selector, @href) ->
-
-  load: =>
-    $.get @href, (data) =>
-      messages = $(@selector, data)
-      $(@selector).replaceWith(messages)
-
-  add: (message) =>
-    $("<li>").html(message.html()).prependTo(@selector)
+class window.RemoteList extends window.RemoteBox
+  add: (item) =>
+    @el.prepend($("<li>").html(item.html()))

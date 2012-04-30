@@ -10,6 +10,7 @@ require "messages_resource"
 require "message_resource"
 require "javascript_resource"
 require "css_resource"
+require "sign_in_resource"
 
 App = Webmachine::Application.new do |app|
   app.routes do
@@ -17,6 +18,7 @@ App = Webmachine::Application.new do |app|
     add ["messages", :id], MessageResource
     add ["application.js"], JavascriptResource
     add ["application.css"], CssResource
+    add ["sign_in"], SignInResource
     add ["*"], HamlResource
   end
 end

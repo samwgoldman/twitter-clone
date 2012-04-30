@@ -7,21 +7,24 @@ class HamlResource < Webmachine::Resource
 
   private
 
-  def template_path
-    views_dir = File.expand_path("../../views", __FILE__)
-    if request.path_tokens.empty?
+  def views_dir
+    File.expand_path("../../views", __FILE__)
+  end
+
+  def template_path(path = request.disp_path)
+    if path.empty?
       File.join(views_dir, "home.haml")
     else
-      File.join(views_dir, *request.path_tokens, ".haml")
+      File.join(views_dir, "#{path}.haml")
     end
   end
 
-  def template
-    File.read(template_path)
+  def template(path = request.disp_path)
+    File.read(template_path(path))
   end
 
-  def view
-    Haml::Engine.new(template)
+  def view(path = request.disp_path)
+    Haml::Engine.new(template(path))
   end
 
   def to_xhtml

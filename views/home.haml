@@ -5,10 +5,15 @@
     %script{type: "text/javascript", src: "/application.js"}
     %link{rel: "stylesheet", href: "/application.css"}
   %body
-    #wrapper
+    .navbar
+      .navbar-inner
+        .wrapper
+          %ul.nav.pull-right
+            %li#sign_in{href: "/sign_in"}
+    .wrapper
       #content
         %form{action: "/messages", method: "POST"}
           %label{for: "message"} What's new?
-          %input{type: "text", id: "message", name: "message"}
-          %input{type: "submit", value: "Tell it!"}
-        #messages
+          %input#message{type: "text", name: "message"}
+          %button.btn.btn-primary{type: "submit"} Tell it!
+        %ul#messages{href: "/messages"}

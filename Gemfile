@@ -9,6 +9,7 @@ gem "less"
 gem "uglifier"
 gem "therubyracer"
 gem "uuid"
+gem "bcrypt-ruby"
 gem "rack"
 gem "mongrel", "1.2.0.pre2"
 
